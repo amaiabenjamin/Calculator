@@ -1,0 +1,17 @@
+// Калькулятор с поддержкой различных операций
+
+object Calculator {
+  def main(args: Array[String]): Unit = {
+    val operation = args(0)
+    val operands = args.drop(1).map(_.toInt)
+    val result = operation match {
+      case "+" => operands.sum
+      case "-" => operands.reduceLeft(_ - _)
+      case "*" => operands.product
+      case "/" => operands.reduceLeft(_ / _)
+      case "%" => operands.reduceLeft(_ % _)
+      case _ => throw new IllegalArgumentException("Unsupported operation")
+    }
+    println(s"The result is $result")
+  }
+}
